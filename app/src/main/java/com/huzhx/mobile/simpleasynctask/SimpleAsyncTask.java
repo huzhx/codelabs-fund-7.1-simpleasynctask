@@ -1,12 +1,15 @@
 package com.huzhx.mobile.simpleasynctask;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 import java.util.Random;
 
 public class SimpleAsyncTask extends AsyncTask<Void, Void, String> {
+
+    private static final String TAG = SimpleAsyncTask.class.getName();
     private WeakReference<TextView> mTextView;
 
     SimpleAsyncTask(TextView tv) {
@@ -19,6 +22,7 @@ public class SimpleAsyncTask extends AsyncTask<Void, Void, String> {
         int n = r.nextInt(11);
         int s = n * 200;
         try {
+            Log.d(TAG, "About to sleep " + s + "milliseconds");
             Thread.sleep(s);
         } catch (InterruptedException e) {
             e.printStackTrace();
